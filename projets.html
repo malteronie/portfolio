@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Lindenberg Tristan</title>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css"> <!-- Ajout du fichier CSS externe -->
+</head>
+<body>
+
+    <nav class="d-flex justify-content-around">
+        <div class="profile d-flex align-items-center gap-2">
+            <a href="index.html"><img src="img/profil.gif" alt="Profil"></a>
+            <h1>Lindenberg Tristan</h1>
+        </div>
+        <ul class=" test">
+            <li class="bouton"><a href="./index.html">Accueil</a></li>
+            <li class="bouton"><a href="./bts_sio.html">Le BTS SIO</a></li>
+            <li class="bouton"><a href="./projets.html">Mes projets</a></li>
+            <li class="bouton"><a href="./veilles.html">Veilles Technologiques</a></li>
+            <li class="bouton"><a href="./cv.html">Mon CV</a></li>
+            <li class="bouton"><a href="mailto:lindenberg.t@outlook.com" target="_blank">Me contacter</a></li>
+        </ul>
+    </nav>
+
+    <div class="container color mt-5">
+        <h1 class="projets text-center">Projets réalisés au cours de ma scolarité</h1>
+
+        <div class="mt-5">
+            <h3><a href="messagerie.html">SIAO</a></h3>
+        </div>
+
+        <div class="mt-5">
+            <h3><a href="automat.html">Le SIAO</a></h3>
+            <div class="row align-items-center">
+                <div class="col-md-6 fs-5">
+                    <p>Site vitrine réalisé pour une association, le SIAO, visant a aider les personnes ayant des difficultés à trouver un logement, que ce soit des sans-abris ou des étudiants quittant leurs parents</p>
+                </div>
+                <div class="col-md-6 text-center">
+                    <img class="img-fluid border" src="img/SIAO.png" alt="Serre">
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <h3><a href="messagerie.html">MyCelium (En cours)</a></h3>
+            <div class="col-md-8 offset-md-2 fs-5">
+                <p>Mycelium est un ensemble de logiciels permettant la centralisation, la transformation et la redistribution des données entre les services. L'architecture s'appuie sur SystemD, Kafka et Grafana.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="/src/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.9"></script>
+
+</body>
+</html>
