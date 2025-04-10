@@ -1,64 +1,52 @@
-
-
-/* Style général */
-body {
-    text-align: center;
-    background-position: center;
-    width: 100%;
-    background-color: grey;
-    color:white
-}
-
-.first{
-    background: url("img/fondd.jpeg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-    z-index:  1;
-    color: white;
-    background-attachment: fixed;
-    text-align: center;
-    padding-top: 23%;
-}
-
-.first h1{
-    font-size: 60px;
-}
-
-.bvn{
-    margin-left: 25%;
-    width: 29ch;
-    font-family: monospace;
-    text-wrap: nowrap;
-    overflow: hidden;
-    animation: typing 2s steps(20) infinite alternate-reverse;
-}
-@keyframes typing {
-    from{
-        width: 0ch;
-    }
-}
-
 html, body {
     height: 100%;
     margin: 0;
-    overflow: auto; /* Permet le défilement */
+    overflow: auto;
+    text-align: center;
+    background-color: #111111;
+    color: white;
 }
+
 canvas {
-    position: fixed; /* Fixe le canvas pour qu'il reste en arrière-plan */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1; /* Met le canvas derrière tout */
-    pointer-events: none; /* Permet de cliquer à travers le canvas */
+    z-index: -1;
+    pointer-events: none;
 }
-/* Barre de navigation */
-nav {
-    
-    z-index: 1000; /* S'assurer qu'elle passe au-dessus */
+
+.first {
+    background: url("img/fondd.jpeg") center/cover no-repeat fixed;
+    width: 100%;
+    height: 100%;
+    padding-top: 23%;
+    z-index: 1;
     color: white;
+}
+
+.first h1 {
+    font-size: 60px;
+}
+
+.bvn {
+    margin-left: 25%;
+    width: 29ch;
+    font-family: monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 2s steps(20) infinite alternate;
+}
+
+@keyframes typing {
+    from {
+        width: 0ch;
+    }
+}
+
+nav {
+    z-index: 1000;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -68,46 +56,48 @@ nav {
     background-color: rgba(29, 31, 30);
     padding: 10px;
 }
-.test{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-.test li{
-    margin-right: 12px;
-}
-/* Profil */
+
 nav .profile {
     display: flex;
     align-items: center;
 }
+
 nav .profile img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
 }
+
 nav .profile h1 {
     margin-left: 10px;
     font-size: 15px;
     font-family: 'Trebuchet MS', sans-serif;
 }
 
-/* Liste des liens */
+.test {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 ul {
-    display: block; /* Assure que la liste prend toute la largeur */
-    padding-left: 20px; /* Ajoute une indentation pour un meilleur rendu */
+    list-style: none;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    margin: 0;
 }
 
 li {
-    display: list-item; /* Corrige le comportement flex si appliqué */
-    margin-bottom: 5px; /* Ajoute un petit espace entre les éléments */
-    list-style: none;
+    margin-bottom: 5px;
+    transition: all 0.3s ease-in-out;
 }
+
 li:hover {
     border-bottom-color: black;
 }
 
-/* Style des boutons */
 .bouton {
     border: none;
     outline: none;
@@ -115,20 +105,23 @@ li:hover {
     border-bottom: 1px solid #ccc;
     cursor: pointer;
     margin-right: 15px;
+    transition: all 0.3s ease;
 }
+
 .bouton:hover {
     color: #ccc;
     border-bottom-color: black;
 }
+
 .bouton a {
     text-decoration: none;
     color: white;
 }
+
 .bouton a:hover {
     color: #ADD8E6;
 }
 
-/* Sections */
 section {
     margin: 4%;
 }
@@ -138,39 +131,26 @@ header div {
     line-height: 150%;
 }
 
-/* Adaptation mobile */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        align-items: center;
-    }
-    ul {
-        flex-direction: column;
-    }
-    li {
-        margin: 10px 0;
-    }
-}
-
 .full-screen-image {
     width: 100%;
-    height: 100vh; /* Occupe toute la hauteur de l'écran */
+    height: 100vh;
     background: url('../public/img/fond.webp') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Espacement sous l'image pour voir le texte en scrollant */
 .content {
     padding: 50px 20px;
 }
 
-
+/* ===== Options ===== */
 .options {
     display: flex;
     justify-content: space-around;
     padding: 50px;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .option {
@@ -178,19 +158,17 @@ header div {
     padding: 20px;
     border-radius: 10px;
     width: 40%;
+    min-width: 250px;
+    transition: all 0.3s ease;
 }
 
 .option img {
     width: 100px;
 }
 
-.competences, .debouches {
+.competences,
+.debouches {
     padding: 40px;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
 }
 
 ul li {
@@ -202,93 +180,93 @@ ul li {
     color: #FFF;
     transition: all 0.5s;
     position: relative;
-  }
-  .btn-three::before {
+}
+
+.btn-three::before,
+.btn-three::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     z-index: 1;
-    background-color: rgba(255,255,255,0.1);
     transition: all 0.3s;
-  }
-  .btn-three:hover::before {
-    opacity: 0 ;
-    transform: scale(0.5,0.5);
-  }
-  .btn-three::after {
-    content: '';
-    position: absolute;
+}
+
+.btn-three::before {
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-three:hover::before {
     opacity: 0;
-    transition: all 0.3s;
-    border: 1px solid rgba(255,255,255,0.5);
-    transform: scale(1.2,1.2);
-  }
-  .btn-three:hover::after {
+    transform: scale(0.5);
+}
+
+.btn-three::after {
+    top: 0;
+    left: 0;
+    opacity: 0;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transform: scale(1.2);
+}
+
+.btn-three:hover::after {
     opacity: 1;
-    transform: scale(1,1);
-  }
+    transform: scale(1);
+}
 
-
-
-  /* btn 2 */
-  .btn-one {
+.btn-one {
     color: #FFF;
     transition: all 0.3s;
     position: relative;
-  }
-  .btn-one span {
-    transition: all 0.3s;
-  }
-  .btn-one::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0;
-    transition: all 0.3s;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-top-style: solid;
-    border-bottom-style: solid;
-    border-top-color: rgba(255,255,255,0.5);
-    border-bottom-color: rgba(255,255,255,0.5);
-    transform: scale(0.1, 1);
-  }
-  .btn-one:hover span {
-    letter-spacing: 2px;
-  }
-  .btn-one:hover::before {
-    opacity: 1; 
-    transform: scale(1, 1); 
-  }
-  .btn-one::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    transition: all 0.3s;
-    background-color: rgba(255,255,255,0.1);
-  }
-  .btn-one:hover::after {
-    opacity: 0; 
-    transform: scale(0.1, 1);
-  }
+}
 
-  .bts_sio {
+.btn-one span {
+    transition: all 0.3s;
+}
+
+.btn-one::before,
+.btn-one::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: all 0.3s;
+}
+
+.btn-one::before {
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    transform: scale(0.1, 1);
+}
+
+.btn-one:hover span {
+    letter-spacing: 2px;
+}
+
+.btn-one:hover::before {
+    opacity: 1;
+    transform: scale(1, 1);
+}
+
+.btn-one::after {
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-one:hover::after {
+    opacity: 0;
+    transform: scale(0.1, 1);
+}
+
+/* ===== Cartes 3D ===== */
+.bts_sio {
     text-align: center;
     margin: 50px auto;
 }
@@ -296,6 +274,7 @@ ul li {
 .d-flex {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
@@ -303,25 +282,25 @@ ul li {
     border-radius: 30px;
     width: 300px;
     height: 300px;
-    perspective: 1000px; /* Permet la rotation 3D */
+    perspective: 1000px;
 }
 
 .card-inner {
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-    transition: transform 0.6s; /* Durée de la rotation */
+    transition: transform 0.6s;
 }
 
 .card:hover .card-inner {
-    transform: rotateY(180deg); /* Rotation de 180° lors du survol */
+    transform: rotateY(180deg);
 }
 
 .card-front,
 .card-back {
     border-radius: 30px;
     position: absolute;
-    backface-visibility: hidden; /* Cache l'arrière lorsqu'il est retourné */
+    backface-visibility: hidden;
     width: 100%;
     height: 100%;
     display: flex;
@@ -340,6 +319,128 @@ ul li {
 .card-back {
     background-color: #f8e7e8;
     color: black;
-    transform: rotateY(180deg); /* Positionne le verso */
+    transform: rotateY(180deg);
     padding: 20px;
+}
+
+.about-me {
+    background-color: #fff;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-me h1 {
+    color: #007BFF;
+    margin-bottom: 30px;
+}
+
+.about-me img {
+    max-width: 100%;
+}
+
+section h1 {
+    color: #007BFF;
+    margin-bottom: 20px;
+}
+
+.list-group-item {
+    font-size: 16px;
+    border: none;
+    padding: 15px;
+    background-color: #f8f9fa;
+    color: #555;
+}
+
+.list-group-item a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.list-group-item a:hover {
+    text-decoration: underline;
+}
+
+.skill-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    position: relative;
+}
+
+.skill-icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.skill-label {
+    font-size: 0.9rem;
+    color: #333;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    margin-top: 5px;
+}
+
+.skill-icon:hover .skill-label {
+    opacity: 1;
+}
+
+.img-adjust {
+    padding: 5px;
+    background-color: white;
+    border-radius: 50%;
+    object-fit: contain !important;
+}
+.rounded-circle {
+    border-radius: 50%;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+}
+
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .first {
+        padding-top: 40%;
+    }
+
+    .options {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .option {
+        width: 80%;
+    }
+
+    .d-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+        height: auto;
+    }
 }
