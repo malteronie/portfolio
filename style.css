@@ -195,7 +195,6 @@ ul li {
 .btn-three::before {
     top: 0;
     left: 0;
-    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .btn-three:hover::before {
@@ -257,7 +256,6 @@ ul li {
 .btn-one::after {
     bottom: 0;
     left: 0;
-    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .btn-one:hover::after {
@@ -312,19 +310,19 @@ ul li {
 }
 
 .card-front {
-    background-color: whitesmoke;
-    color: black;
+    background-color: #1D1D1D;
+    color: white;
 }
 
 .card-back {
-    background-color: #f8e7e8;
-    color: black;
+    background-color: #2E2E2E;
+    color: white;
     transform: rotateY(180deg);
     padding: 20px;
 }
 
 .about-me {
-    background-color: #fff;
+    background-color: #1D1D1D;
     padding: 40px 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -348,8 +346,8 @@ section h1 {
     font-size: 16px;
     border: none;
     padding: 15px;
-    background-color: #f8f9fa;
-    color: #555;
+    background-color: #1D1D1D;
+    color: white;
 }
 
 .list-group-item a {
@@ -370,18 +368,19 @@ section h1 {
 }
 
 .skill-icon img {
+    background-color: black;
+
     width: 60px;
     height: 60px;
     object-fit: contain;
     border-radius: 50%;
-    background-color: white;
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease;
 }
 
 .skill-label {
     font-size: 0.9rem;
-    color: #333;
+    color: white;
     opacity: 0;
     transition: opacity 0.3s ease;
     margin-top: 5px;
@@ -393,7 +392,7 @@ section h1 {
 
 .img-adjust {
     padding: 5px;
-    background-color: white;
+    background-color: #1D1D1D;
     border-radius: 50%;
     object-fit: contain !important;
 }
