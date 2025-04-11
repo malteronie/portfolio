@@ -1,161 +1,167 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Lindenberg Tristan</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
-</head>
-
-<body>
-    <nav class="d-flex justify-content-around">
-        <div class="profile d-flex align-items-center gap-2">
-            <a href="index.html"><img src="img/profil.gif" alt="Profil"></a>
-            <h1>Lindenberg Tristan</h1>
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Portfolio - Lindenberg Tristan</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    
+    <body>
+        <nav class="d-flex justify-content-around navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <div class="profile d-flex align-items-center gap-2">
+                    <a href="index.html"><img src="img/profil.gif" alt="Profil"></a>
+                    <h1>Lindenberg Tristan</h1>
+                </div>
+                <ul class="test">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <li class="bouton"><a href="./index.html" class="btn btn-one">Accueil</a></li>
+                        <li class="bouton"><a href="./projets.html" class="btn btn-three">Mes projets</a></li>
+                        <li class="bouton"><a href="./veilles.html" class="btn btn-three">Veilles Technologiques</a></li>
+                        <li class="bouton"><a href="./cv.html" class="btn btn-three">Mon CV</a></li>
+                        <li class="bouton"><a href="mailto:lindenberg.t@outlook.com" target="_blank" class="btn btn-three">Me contacter</a></li>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+        
+        <div class="first">
+            <h1 class="bvn">Bienvenue sur mon portfolio</h1>
+            <h3 id="pop" data-label="Je suis LINDENBERG Tristan, apprenti en BTS SIO option SLAM"></h3>
         </div>
-        <ul class="test">
-            <li class="bouton"><a href="./index.html" class="btn btn-one">Accueil</a></li>
-            <li class="bouton"><a href="./projets.html" class="btn btn-three">Mes projets</a></li>
-            <li class="bouton"><a href="./veilles.html" class="btn btn-three">Veilles Technologiques</a></li>
-            <li class="bouton"><a href="./cv.html" class="btn btn-three">Mon CV</a></li>
-            <li class="bouton"><a href="mailto:lindenberg.t@outlook.com" target="_blank" class="btn btn-three">Me contacter</a></li>
-        </ul>
-    </nav>
-
-    <div class="first">
-        <h1 class="bvn">Bienvenue sur mon portfolio</h1>
-        <h3 id="pop" data-label="Je suis LINDENBERG Tristan, apprenti en BTS SIO option SLAM"></h3>
-    </div>
-
-    <header class="container content">
-        <section class="bts_sio">
-            <h1>Découvrir le BTS SIO</h1><br>
-            <p>Le BTS Services Informatiques aux Organisations (SIO) est une formation polyvalente qui prépare les étudiants aux métiers de l'informatique en entreprise ou dans des organismes publics.</p>
-            <div class="d-flex justify-content-around">
-                <div class="col-sm-12 col-md-5 card" style="background-color: #1D1D1D;">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <h2>BTS SIO option SLAM</h2>
-                        </div>
-                        <div class="card-back">
-                            <p>La Spécialité Solutions Logicielles et Applications Métiers (SLAM) prépare les étudiants aux métiers du développement de logiciels et d’applications informatiques.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-5 card" style="background-color: #1D1D1D;">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <h2>BTS SIO option SISR</h2>
-                        </div>
-                        <div class="card-back">
-                            <p>La Spécialité Solutions d'Infrastructure, Systèmes et Réseaux (SISR) forme des spécialistes en administration et maintenance des réseaux et systèmes informatiques.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <br><br><br><br>
-
-        <section class="about-me mt-5">
-            <h1 class="text-center">À propos de Moi</h1>
-            <div class="row">
-                <div class="col-md-6">
-                    <p>Je suis actuellement en deuxième année de BTS SIO (Services informatiques aux organisations) dans la spécialité Solutions Logicielles et Applications Métiers (SLAM) à Maestris BTS à Toulon. </p>
-                    <p>Ce portfolio a pour but de présenter les différentes compétences que j’ai pu acquérir ainsi que les différents projets réalisés au cours de ces deux dernières années.</p>
-                </div>
-                <div class="col-md-6">
-                    <img src="img/maestris.png" alt="Logo Maestris" class="img-fluid rounded-circle shadow">
-                </div>
-            </div>
-        </section>
         
-        <section class="education mt-5">
-            <h1 class="text-center">Mes Formations</h1>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><strong>Baccalauréat technologique</strong>, mention bien au <a href="https://rh-terre.defense.gouv.fr/formation/lyceesmilitaires/lycee-militaire-d-aix-en-provence" target="_blank">Lycée militaire d'Aix-en-Provence</a></li>
-                <li class="list-group-item"><strong>BTS SIO en alternance</strong>, au <a href="https://www.maestris-bts.com/campus/toulon/" target="_blank">campus Maestris à Toulon</a></li>
-            </ul>
-        </section>
+        <header class="container content">
+            <section class="bts_sio">
+                <h1>Découvrir le BTS SIO</h1><br>
+                <p>Le BTS Services Informatiques aux Organisations (SIO) est une formation polyvalente qui prépare les étudiants aux métiers de l'informatique en entreprise ou dans des organismes publics.</p>
+                <div class="d-flex justify-content-around">
+                    <div class="col-sm-12 col-md-5 card" style="background-color: #1D1D1D;">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <h2>BTS SIO option SLAM</h2>
+                            </div>
+                            <div class="card-back">
+                                <p>La Spécialité Solutions Logicielles et Applications Métiers (SLAM) prépare les étudiants aux métiers du développement de logiciels et d’applications informatiques.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-5 card" style="background-color: #1D1D1D;">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <h2>BTS SIO option SISR</h2>
+                            </div>
+                            <div class="card-back">
+                                <p>La Spécialité Solutions d'Infrastructure, Systèmes et Réseaux (SISR) forme des spécialistes en administration et maintenance des réseaux et systèmes informatiques.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <br><br><br><br>
+            
+            <section class="about-me mt-5">
+                <h1 class="text-center">À propos de Moi</h1>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Je suis actuellement en deuxième année de BTS SIO (Services informatiques aux organisations) dans la spécialité Solutions Logicielles et Applications Métiers (SLAM) à Maestris BTS à Toulon. </p>
+                        <p>Ce portfolio a pour but de présenter les différentes compétences que j’ai pu acquérir ainsi que les différents projets réalisés au cours de ces deux dernières années.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="img/maestris.png" alt="Logo Maestris" class="img-fluid rounded-circle shadow">
+                    </div>
+                </div>
+            </section>
+            
+            <section class="education mt-5">
+                <h1 class="text-center">Mes Formations</h1>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Baccalauréat technologique</strong>, mention bien au <a href="https://rh-terre.defense.gouv.fr/formation/lyceesmilitaires/lycee-militaire-d-aix-en-provence" target="_blank">Lycée militaire d'Aix-en-Provence</a></li>
+                    <li class="list-group-item"><strong>BTS SIO en alternance</strong>, au <a href="https://www.maestris-bts.com/campus/toulon/" target="_blank">campus Maestris à Toulon</a></li>
+                </ul>
+            </section>
+            
+            <section class="experience mt-5">
+                <h1 class="text-center">Mes Expériences Professionnelles</h1>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Apprenti à l'État-Major de l'aéronautique navale (ALAVIA)</strong>, en tant que Technicien développement informatique</li>
+                    <li class="list-group-item"><strong>Projet de fin de première et deuxième année du bac STI2D</strong>, portant sur des technologies modernes dans l'IoT (Internet of Things).</li>
+                    <li class="list-group-item"><strong>Stage de découverte</strong> dans une entreprise spécialisée dans la conception de stands, où j’ai participé à la gestion des solutions techniques pour des événements professionnels.</li>
+                </ul>
+            </section>
+            <section class="skills mt-5">
+                <h1 class="mt-5">Mes Compétences</h1>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Le développement web</h3>
+                        <p>Le développement Web est une technologie importante que nous découvrons en spécialité SLAM lors du BTS SIO.</p>
+                        <div class="d-flex gap-3 flex-wrap">
+                            <div class="skill-icon">
+                                <img src="img/laravel.png" alt="Laravel" loading="lazy">
+                                <p class="skill-label">Laravel</p>
+                            </div>
+                            <div class="skill-icon">
+                                <img src="img/javascript.png" alt="JavaScript" loading="lazy">
+                                <p class="skill-label">JavaScript</p>
+                            </div>
+                            <div class="skill-icon">
+                                <img src="img/php.png" alt="PHP" loading="lazy">
+                                <p class="skill-label">PHP</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Les bases de données</h3>
+                        <p>L’utilisation de bases de données est essentielle pour stocker et traiter des informations des applications.</p>
+                        <div class="d-flex gap-3 flex-wrap">
+                            <div class="skill-icon">
+                                <img src="img/sql.png" alt="SQL" loading="lazy">
+                                <p class="skill-label">SQL</p>
+                            </div>
+                            <div class="skill-icon">
+                                <img src="img/kafka.png" alt="Kafka" loading="lazy">
+                                <p class="skill-label">Kafka</p>
+                            </div>
+                            <div class="skill-icon">
+                                <img src="img/mongodb.png" alt="Hadoop" loading="lazy">
+                                <p class="skill-label">MongoDB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </header>
         
-        <section class="experience mt-5">
-            <h1 class="text-center">Mes Expériences Professionnelles</h1>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><strong>Apprenti à l'État-Major de l'aéronautique navale (ALAVIA)</strong>, en tant que Technicien développement informatique</li>
-                <li class="list-group-item"><strong>Projet de fin de première et deuxième année du bac STI2D</strong>, portant sur des technologies modernes dans l'IoT (Internet of Things).</li>
-                <li class="list-group-item"><strong>Stage de découverte</strong> dans une entreprise spécialisée dans la conception de stands, où j’ai participé à la gestion des solutions techniques pour des événements professionnels.</li>
-            </ul>
-        </section>
-        <section class="skills mt-5">
-            <h1 class="mt-5">Mes Compétences</h1>
-            <div class="row">
-                <div class="col-md-6">
-                    <h3>Le développement web</h3>
-                    <p>Le développement Web est une technologie importante que nous découvrons en spécialité SLAM lors du BTS SIO.</p>
-                    <div class="d-flex gap-3 flex-wrap">
-                        <div class="skill-icon">
-                            <img src="img/laravel.png" alt="Laravel" loading="lazy">
-                            <p class="skill-label">Laravel</p>
-                        </div>
-                        <div class="skill-icon">
-                            <img src="img/javascript.png" alt="JavaScript" loading="lazy">
-                            <p class="skill-label">JavaScript</p>
-                        </div>
-                        <div class="skill-icon">
-                            <img src="img/php.png" alt="PHP" loading="lazy">
-                            <p class="skill-label">PHP</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <h3>Les bases de données</h3>
-                    <p>L’utilisation de bases de données est essentielle pour stocker et traiter des informations des applications.</p>
-                    <div class="d-flex gap-3 flex-wrap">
-                        <div class="skill-icon">
-                            <img src="img/sql.png" alt="SQL" loading="lazy">
-                            <p class="skill-label">SQL</p>
-                        </div>
-                        <div class="skill-icon">
-                            <img src="img/kafka.png" alt="Kafka" loading="lazy">
-                            <p class="skill-label">Kafka</p>
-                        </div>
-                        <div class="skill-icon">
-                            <img src="img/mongodb.png" alt="Hadoop" loading="lazy">
-                            <p class="skill-label">MongoDB</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </header>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.9"></script>
-    <script>
-        const htmlP = document.getElementById("pop");
-        const txt = htmlP.dataset.label;
-        let i = 0;
-
-        function showLetters() {
-            let timeOut;
-            if (i < txt.length) {
-                const span = document.createElement("span");
-                span.textContent = txt[i];
-                htmlP.appendChild(span);
-                timeOut = setTimeout(showLetters, 50);
-                i++;
-            } else {
-                clearTimeout(timeOut);
-                console.log("end");
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.9"></script>
+        <script>
+            const htmlP = document.getElementById("pop");
+            const txt = htmlP.dataset.label;
+            let i = 0;
+            
+            function showLetters() {
+                let timeOut;
+                if (i < txt.length) {
+                    const span = document.createElement("span");
+                    span.textContent = txt[i];
+                    htmlP.appendChild(span);
+                    timeOut = setTimeout(showLetters, 50);
+                    i++;
+                } else {
+                    clearTimeout(timeOut);
+                    console.log("end");
+                }
             }
-        }
-
-        showLetters()
-    </script>
-</body>
-
+            
+            showLetters()
+        </script>
+    </body>
 </html>
 
 
@@ -166,30 +172,30 @@
     Nom, prénom, classe
     Parcours scolaire et professionnel (stages, alternance)
     CV et profil LinkedIn (si tu n’en as pas encore, c’est le moment d’en créer un !)
-
-✅ Présentation du BTS SIO et de ton option (SLAM ou SISR)
-
+    
+    ✅ Présentation du BTS SIO et de ton option (SLAM ou SISR)
+    
     Explique en quelques lignes les objectifs du BTS et ta spécialisation
-
-✅ Projets Personnalisés Encadrés (PPE)
-
+    
+    ✅ Projets Personnalisés Encadrés (PPE)
+    
     Présente tes projets en détaillant les technologies utilisées (HTML, CSS, PHP, Python, SQL…)
     Ajoute des captures d’écran et un lien vers tes dépôts GitHub
-
-✅ Veille technologique
+    
+    ✅ Veille technologique
 
     Sujet de veille choisi et outils utilisés (Google Alerts, Feedly, Twitter…)
     Explication de l’impact des évolutions technologiques sur ton domaine
-
-✅ Gestion du patrimoine informatique
-
+    
+    ✅ Gestion du patrimoine informatique
+    
     Décris les concepts clés vus en cours et tes expériences pratiques (maintenance, sécurisation, audits…)
-
-✅ Tableau de synthèse des compétences professionnelles
-
+    
+    ✅ Tableau de synthèse des compétences professionnelles
+    
     Coche uniquement les compétences que tu maîtrises vraiment et que tu peux démontrer
-
-✅ Page de contact
-
+    
+    ✅ Page de contact
+    
     Si ton portfolio est en ligne, ajoute une section pour être contacté par un recruteur
--->
+    -->

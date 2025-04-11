@@ -263,7 +263,6 @@ ul li {
     transform: scale(0.1, 1);
 }
 
-/* ===== Cartes 3D ===== */
 .bts_sio {
     text-align: center;
     margin: 50px auto;
@@ -447,7 +446,7 @@ a:hover {
 /* SECTION TITRE DE PAGE */
 .section-projets {
     padding: 60px 20px;
-    background-color: #f4f4f4;
+    background-color: #1D1D1D;
     border-radius: 20px;
     margin-top: 40px;
 }
@@ -456,12 +455,11 @@ a:hover {
     text-align: center;
     font-size: 2.8rem;
     margin-bottom: 50px;
-    color: #222;
+    color: white;
 }
 
-/* BLOC INDIVIDUEL DE PROJET */
 .projet {
-    background: white;
+    background: #1D1D1D;
     border-radius: 20px;
     padding: 30px;
     margin-bottom: 50px;
@@ -488,14 +486,12 @@ a:hover {
     text-decoration: underline;
 }
 
-/* TEXTE DU PROJET */
 .projet-description {
     font-size: 1.1rem;
     color: #444;
     line-height: 1.7;
 }
 
-/* IMAGE DU PROJET */
 .projet-img {
     max-width: 100%;
     height: 250px;
