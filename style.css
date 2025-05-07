@@ -31,18 +31,22 @@ canvas {
 }
 
 .bvn {
-    margin-left: 25%;
-    width: 29ch;
+    text-align: center;
+    align-items: center;
     font-family: monospace;
+    white-space: nowrap;
     overflow: hidden;
-    animation: typing 2s steps(20) 3 alternate;
+    width: 29ch;
+    margin: auto;
+    animation: typing 2s steps(29) 1 forwards;
 }
 
 @keyframes typing {
     from {
-        width: 0ch;
+        width: 0;
     }
 }
+
 
 nav {
     z-index: 1000;
@@ -68,7 +72,7 @@ nav .profile img {
 }
 
 nav .profile h1 {
-    margin-left: 10px;
+    margin-left: auto;
     font-size: 15px;
     font-family: 'Trebuchet MS', sans-serif;
 }
@@ -562,3 +566,38 @@ a:hover {
     transform: scale(1.05);
 }
 
+.footer {
+    background-color: #1D1D1D;
+    color: white;
+    text-align: center;
+    border-top: 1px solid #444;
+}
+
+.social-icons a {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1);
+}
+
+.social-icon {
+    width: 30px;
+    height: 30px;
+    filter: brightness(0) invert(1); /* rend l'icône blanche */
+}
+@media (max-width: 600px) {
+    .bvn {
+        width: 90%;
+        font-size: 1.2rem;
+        white-space: normal;
+    }
+}
+@media (max-width: 1024px) {
+    .bvn {
+        width: 80%;
+        font-size: 1.5rem;
+        white-space: normal;
+    }
+}
