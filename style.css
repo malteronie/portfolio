@@ -587,6 +587,7 @@ a:hover {
 
 .social-icon {
     width: 30px;
+    border-radius: 6px;
     height: 30px;
 }
 @media (max-width: 600px) {
@@ -606,4 +607,26 @@ a:hover {
 
 .git {
     filter: brightness(0) invert(1); /* rend l'icône blanche */
+}
+
+.button-project {
+    display: inline-block;
+    width: 150px;
+    margin: 20px auto;
+    text-align: center;
+    color: black;
+    border: none;
+outline: none;
+    background-color: #ecf0f1; /* bleu bootstrap */
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.button-project:hover {
+    background-color: #ecf0f1;
+    text-decoration: none;
+    color: black;
 }
