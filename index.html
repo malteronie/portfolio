@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-    
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +12,7 @@
         <nav class="d-flex justify-content-around navbar navbar-expand-lg">
             <div class="container-fluid">
                 <div class="profile d-flex align-items-center gap-2">
-                    <!-- <a href="index.html"><img src="" alt="Profil"></a> -->
+                    <img src="img/Photo.jpg" alt="Profil">
                     <h1>Lindenberg Tristan</h1>
                 </div>
                 <ul class="test">
@@ -29,12 +28,11 @@
                 </ul>
             </div>
         </nav>
-        
         <div class="first">
             <h1 class="bvn">Bienvenue sur mon portfolio</h1>
             <h2 id="pop" data-label="Je suis LINDENBERG Tristan, apprenti en BTS SIO option SLAM"></h3>
         </div>
-        
+
         <header class="container content">
             <section class="about-me mt-5">
                 <h1 class="text-center">À propos de Moi</h1>
@@ -48,12 +46,12 @@
                     </div>
                 </div>
             </section>
-
+            
             <br><br><br><br>
-
+            
             <section class="bts_sio">
                 <h1>Découvrir le BTS SIO</h1><br>
-                <p>Le BTS Services Informatiques aux Organisations (SIO) est une formation polyvalente qui prépare les étudiants aux métiers de l'informatique en entreprise ou dans des organismes publics.</p>
+                <p>Le BTS SIO (Services Informatiques aux Organisations) est une formation en deux ans qui prépare aux métiers de l’informatique, notamment dans le développement d’applications (option SLAM) ou l’administration des systèmes et réseaux (option SISR).</p>
                 <div class="d-flex justify-content-around">
                     <div class="col-sm-12 col-md-5 card" style="background-color: #1D1D1D;">
                         <div class="card-inner">
@@ -81,17 +79,31 @@
             <section class="education mt-5">
                 <h1 class="text-center">Mes Formations</h1>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><strong>BTS SIO en alternance</strong>, au <a href="https://www.maestris-bts.com/campus/toulon/" target="_blank">campus Maestris à Toulon</a></li>
-                    <li class="list-group-item"><strong>Baccalauréat technologique</strong>, mention BIEN au <a href="https://rh-terre.defense.gouv.fr/formation/lyceesmilitaires/lycee-militaire-d-aix-en-provence" target="_blank">Lycée militaire d'Aix-en-Provence</a></li>
+                    <li class="list-group-item">
+                        <strong>2023–2025 – BTS SIO en alternance</strong>, au 
+                        <a href="https://www.maestris-bts.com/campus/toulon/" target="_blank">campus Maestris à Toulon</a>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>2020–2023 – Baccalauréat technologique</strong>, mention BIEN au 
+                        <a href="https://rh-terre.defense.gouv.fr/formation/lyceesmilitaires/lycee-militaire-d-aix-en-provence" target="_blank">
+                            Lycée militaire d'Aix-en-Provence
+                        </a>
+                    </li>
                 </ul>
             </section>
             
             <section class="experience mt-5">
                 <h1 class="text-center">Mes Expériences Professionnelles</h1>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><strong>Apprenti à l'État-Major de l'aéronautique navale (ALAVIA)</strong>, en tant que Technicien développement informatique</li>
-                    <li class="list-group-item"><strong>Projet de fin de première et deuxième année du bac STI2D</strong>, portant sur des technologies modernes dans l'IoT (Internet of Things).</li>
-                    <li class="list-group-item"><strong>Stage de découverte</strong> dans une entreprise spécialisée dans la conception de stands.</li>
+                    <li class="list-group-item">
+                        <strong>2023–2025 – Apprenti à l'État-Major de l'aéronautique navale (ALAVIA)</strong>, en tant que Technicien développement informatique
+                    </li>
+                    <li class="list-group-item">
+                        <strong>2022–2023 – Projet de fin de première et deuxième année du bac STI2D</strong>, portant sur des technologies modernes dans l'IoT (Internet of Things).
+                    </li>
+                    <li class="list-group-item">
+                        <strong>2021 – Stage de découverte</strong> dans une entreprise spécialisée dans la conception de stands.
+                    </li>
                 </ul>
             </section>
             <section class="skills mt-5">
@@ -175,7 +187,6 @@
             const htmlP = document.getElementById("pop");
             const txt = htmlP.dataset.label;
             let i = 0;
-            
             function showLetters() {
                 let timeOut;
                 if (i < txt.length) {
@@ -206,6 +217,5 @@
             </div>
         </footer>
     </body>
-
 </html>
 
