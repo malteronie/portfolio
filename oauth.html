@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Application 2 - Proxy OAuth - Portfolio Lindenberg Tristan</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./siao.css">
+    </head>
+    <body>
+        
+        <nav class="d-flex justify-content-around navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <div class="profile d-flex align-items-center gap-2">
+                    <h1>Lindenberg Tristan</h1>
+                </div>
+                <ul class="test">
+                    <button class="navbar-toggler" style="color:white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <li class="bouton"><a href="./index.html" class="btn btn-one">Accueil</a></li>
+                        <li class="bouton"><a href="./projets.html" class="btn btn-three">Mes projets</a></li>
+                        <li class="bouton"><a href="./cv.html" class="btn btn-three">Mon CV</a></li>
+                        <li class="bouton"><a href="mailto:lindenberg.t@outlook.com" target="_blank" class="btn btn-three">Me contacter</a></li>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+        <section class="logo flex">
+            <img id="logo_proxy" src="img/logo_proxy.png" alt="Logo Proxy OAuth">
+        </section>
+        
+        <section id="title" class="section_titre">
+            <h1 id="titre">APPLICATION 2</h1>
+            <h2 id="sous_titre">Proxy d’authentification OAuth en Laravel</h2>
+        </section>
+        
+        <section class="section_presentation">
+            <div class="img_SIAO">
+                <img id="image_SIAO" src="img/oauth.png" alt="Illustration Proxy OAuth">
+            </div>
+            <div class="bloc-1">
+                <h2 id="title_dev_SIAO">Développement du projet</h2>
+                <p>
+                    Cette application agit comme un <strong style="color: #ff0000">proxy d'authentification</strong> entre plusieurs applications clientes et une application externe qui contrôle les comptes utilisateurs. 
+                    Elle permet de faire une seule demande de jeton auprès de cette application externe, puis de gérer localement l'accès aux différentes applications clientes grâce au proxy.
+                </p>
+                <p>
+                    Le proxy gère les requêtes de connexion, les tokens et les redirections en utilisant <strong style="color: #ff0000">Laravel Passport</strong> et <strong style="color: #ff0000">Laravel Socialite</strong>, en servant d'intermédiaire entre les clients et le fournisseur d'identité.
+                </p>
+                <p>
+                    Lien vers le dépôt GitHub ou URL interne (si disponible) :
+                    <br>
+                    <a id="lien_web" href="#" target="_blank">#</a>
+                </p>
+            </div>
+        </section>
+        
+        <section class="bloc-2">
+            <h2 class="section-title">Fonctionnalités principales</h2>
+            <ul>
+                <li>Gestion des redirections OAuth </li>
+                <li>Stockage sécurisé des tokens d’accès et refresh</li>
+                <li>Support de plusieurs applications clientes</li>
+            </ul>
+        </section>
+        <section>
+            <div id="outil" class="bloc-3">
+                <h2 class="section-title">Outils et Technologies</h2>
+                
+                <div class="grid_competence">
+                    <div class="grid-item-competence">
+                        <img src="img/laravel.png" alt="Laravel" class="img-langage">
+                    </div>
+                    <div class="grid-item-competence">
+                        <img src="img/passport.png" alt="Laravel Passport" class="img-langage">
+                    </div>
+                    <div class="grid-item-competence">
+                        <img src="img/socialite.png" alt="Laravel Socialite" class="img-langage">
+                    </div>
+                    <div class="grid-item-competence">
+                        <img src="img/php.png" alt="PHP" class="img-langage">
+                    </div>
+                    <div class="grid-item-competence">
+                        <img src="img/mysql.png" alt="MySQL" class="img-langage">
+                    </div>
+                    <div class="grid-item-competence">
+                        <img src="img/oauth.png" alt="OAuth" class="img-langage">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        
+    </body>
+</html>

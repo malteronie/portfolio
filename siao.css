@@ -91,25 +91,17 @@ a:hover {
     text-decoration: underline;
 }
 
-.bloc-2 ul {
-    list-style: none;
-    padding-left: 0;
-    max-width: 800px;
+.bloc-2 {
+    max-width: 700px;
+    width: 90%;
     margin: 0 auto;
+    padding: 0 1rem;
 }
 
 .bloc-2 li {
     position: relative;
     padding-left: 1.2rem;
     margin-bottom: 0.8rem;
-}
-
-.bloc-2 li::before {
-    content: "•";
-    color: white;
-    position: absolute;
-    left: 0;
-    top: 0;
 }
 
 .grid_competence {
@@ -163,7 +155,7 @@ nav {
     position: sticky;
     top: 0;
     background-color: rgba(29, 31, 30);
-    padding: 10px;
+    
 }
 
 nav .profile {
