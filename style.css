@@ -605,10 +605,6 @@ a:hover {
     }
 }
 
-.git {
-    filter: brightness(0) invert(1); /* rend l'icône blanche */
-}
-
 .button-project {
     display: inline-block;
     width: 150px;
