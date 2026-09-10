@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>System Alert</title>
+<style>
+  :root{
+    --green:#00ff41;
+    --red:#ff2b2b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{
+    height:100%;
+    background:#000;
+    overflow:hidden;
+    font-family:'Courier New', Courier, monospace;
+    cursor:default;
+  }
+
+  /* Matrix rain canvas */
+  #matrix{
+    position:fixed;
+    top:0;left:0;
+    width:100%;height:100%;
+    z-index:1;
+    opacity:0.35;
+  }
+
+  /* Scanlines / CRT flicker overlay */
+  #scanlines{
+    position:fixed;
+    top:0;left:0;width:100%;height:100%;
+    z-index:5;
+    pointer-events:none;
+    background:repeating-linear-gradient(
+      0deg,
+      rgba(0,0,0,0.15) 0px,
+      rgba(0,0,0,0.15) 1px,
+      transparent 2px,
+      transparent 4px
+    );
+    mix-blend-mode:overlay;
+    animation:flicker 0.15s infinite;
+  }
+  @keyframes flicker{
+    0%{opacity:0.9;}
+    50%{opacity:1;}
+    100%{opacity:0.85;}
+  }
+
+  #glitchflash{
+    position:fixed;
+    top:0;left:0;width:100%;height:100%;
+    background:var(--red);
+    opacity:0;
+    z-index:6;
+    pointer-events:none;
+  }
+
+  #content{
+    position:relative;
+    z-index:10;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+    color:var(--green);
+    text-shadow:0 0 5px var(--green), 0 0 10px var(--green);
+  }
+
+  .skull{
+    font-size:80px;
+    animation:pulse 1.2s infinite ease-in-out;
+    margin-bottom:10px;
+  }
+  @keyframes pulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.15);}
+  }
+
+  h1{
+    font-size:clamp(28px,6vw,64px);
+    letter-spacing:4px;
+    color:var(--red);
+    text-shadow:0 0 8px var(--red), 0 0 20px var(--red);
+    animation:glitchtext 2.5s infinite;
+    margin-bottom:20px;
+  }
+
+  @keyframes glitchtext{
+    0%,89%,100%{transform:translate(0,0); text-shadow:0 0 8px var(--red),0 0 20px var(--red);}
+    90%{transform:translate(-3px,2px); text-shadow:2px 0 red,-2px 0 var(--green);}
+    91%{transform:translate(3px,-1px);}
+    92%{transform:translate(-2px,1px); text-shadow:none;}
+    93%{transform:translate(0,0); text-shadow:0 0 8px var(--red),0 0 20px var(--red);}
+  }
+
+  #terminal{
+    width:min(700px,90vw);
+    height:260px;
+    background:rgba(0,10,0,0.6);
+    border:1px solid var(--green);
+    border-radius:6px;
+    padding:16px;
+    text-align:left;
+    overflow:hidden;
+    font-size:14px;
+    line-height:1.5;
+    box-shadow:0 0 25px rgba(0,255,65,0.3) inset, 0 0 25px rgba(0,255,65,0.2);
+  }
+  #terminal-lines{white-space:pre-wrap;}
+  .cursor{
+    display:inline-block;
+    width:8px;height:14px;
+    background:var(--green);
+    animation:blink 1s step-start infinite;
+    vertical-align:middle;
+  }
+  @keyframes blink{50%{opacity:0;}}
+
+  #progress-wrap{
+    width:min(700px,90vw);
+    margin-top:22px;
+    text-align:left;
+  }
+  #progress-label{
+    font-size:13px;
+    margin-bottom:6px;
+    color:var(--red);
+  }
+  #progress-bar-bg{
+    width:100%;
+    height:22px;
+    border:1px solid var(--green);
+    border-radius:4px;
+    overflow:hidden;
+    background:rgba(0,255,65,0.05);
+  }
+  #progress-bar{
+    height:100%;
+    width:0%;
+    background:repeating-linear-gradient(
+      45deg,
+      var(--red),
+      var(--red) 10px,
+      #8a0000 10px,
+      #8a0000 20px
+    );
+    transition:width 0.3s linear;
+  }
+
+  #warning{
+    margin-top:18px;
+    font-size:15px;
+    color:#fff;
+    opacity:0.85;
+  }
+
+  #layout{
+    display:flex;
+    gap:20px;
+    align-items:flex-start;
+    justify-content:center;
+    flex-wrap:wrap;
+    width:min(1000px,95vw);
+  }
+  #left-col{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  #right-col{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    width:260px;
+  }
+
+  #webcam-box{
+    width:260px;
+    height:160px;
+    border:1px solid var(--red);
+    border-radius:6px;
+    background:#050505;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 0 20px rgba(255,43,43,0.4);
+  }
+  #webcam-box::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(ellipse at center, rgba(0,255,65,0.05), transparent 70%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, transparent 2px);
+    animation:webcamnoise 0.3s steps(2) infinite;
+  }
+  @keyframes webcamnoise{
+    0%{filter:brightness(1);}
+    50%{filter:brightness(1.08);}
+    100%{filter:brightness(0.95);}
+  }
+  .rec-dot{
+    position:absolute;
+    top:8px;left:8px;
+    width:9px;height:9px;
+    border-radius:50%;
+    background:var(--red);
+    animation:blink 1s infinite;
+    box-shadow:0 0 6px var(--red);
+  }
+  .rec-label{
+    position:absolute;
+    top:6px;left:22px;
+    font-size:11px;
+    color:var(--red);
+    letter-spacing:1px;
+  }
+  .webcam-caption{
+    position:absolute;
+    bottom:6px;left:8px;
+    font-size:10px;
+    color:var(--green);
+    opacity:0.8;
+  }
+
+  #geo-box{
+    border:1px solid var(--green);
+    border-radius:6px;
+    padding:10px 12px;
+    font-size:12px;
+    background:rgba(0,10,0,0.6);
+    line-height:1.7;
+    text-align:left;
+  }
+  #geo-box .glabel{color:var(--red);}
+  #geo-box span.val{opacity:0;transition:opacity .4s;}
+  #geo-box span.val.show{opacity:1;}
+
+  #filelist-box{
+    border:1px solid var(--green);
+    border-radius:6px;
+    padding:10px 12px;
+    font-size:11px;
+    background:rgba(0,10,0,0.6);
+    height:130px;
+    overflow:hidden;
+    text-align:left;
+  }
+  #filelist-inner{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+  }
+  #filelist-inner div{
+    opacity:0;
+    animation:filein .3s forwards;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  @keyframes filein{
+    from{opacity:0; transform:translateX(-6px);}
+    to{opacity:1; transform:translateX(0);}
+  }
+  #filelist-inner div.deleted{
+    color:var(--red);
+    text-decoration:line-through;
+  }
+
+  body.shake{
+    animation:screenshake 0.4s;
+  }
+  @keyframes screenshake{
+    0%,100%{transform:translate(0,0);}
+    20%{transform:translate(-6px,3px);}
+    40%{transform:translate(5px,-4px);}
+    60%{transform:translate(-4px,4px);}
+    80%{transform:translate(4px,2px);}
+  }
+
+  #prank-reveal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:20;
+    background:#000;
+    color:var(--green);
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    text-align:center;
+    padding:20px;
+  }
+  #prank-reveal h2{
+    color:var(--green);
+    font-size:clamp(22px,5vw,40px);
+    margin-bottom:14px;
+    text-shadow:0 0 10px var(--green);
+  }
+  #prank-reveal p{
+    max-width:600px;
+    line-height:1.6;
+    opacity:0.85;
+  }
+  #prank-reveal button{
+    margin-top:24px;
+    background:transparent;
+    border:1px solid var(--green);
+    color:var(--green);
+    padding:10px 22px;
+    font-family:inherit;
+    font-size:14px;
+    cursor:pointer;
+    border-radius:4px;
+    transition:0.2s;
+  }
+  #prank-reveal button:hover{
+    background:var(--green);
+    color:#000;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="matrix"></canvas>
+<div id="scanlines"></div>
+<div id="glitchflash"></div>
+
+<div id="content">
+  <div class="skull">☠</div>
+  <h1>ACCÈS NON AUTORISÉ DÉTECTÉ</h1>
+
+  <div id="layout">
+    <div id="left-col">
+      <div id="terminal">
+        <div id="terminal-lines"></div><span class="cursor"></span>
+      </div>
+
+      <div id="progress-wrap">
+        <div id="progress-label">EXFILTRATION DES DONNÉES EN COURS... <span id="pct">0%</span></div>
+        <div id="progress-bar-bg"><div id="progress-bar"></div></div>
+      </div>
+
+      <div id="warning">Ne fermez pas cette fenêtre.</div>
+    </div>
+
+    <div id="right-col">
+      <div id="webcam-box">
+        <div class="rec-dot"></div>
+        <div class="rec-label">REC ● LIVE</div>
+        <div class="webcam-caption">CAM_01 — accès distant</div>
+      </div>
+
+      <div id="geo-box">
+        <div><span class="glabel">IP :</span> <span class="val" id="geo-ip"></span></div>
+        <div><span class="glabel">Position :</span> <span class="val" id="geo-loc"></span></div>
+        <div><span class="glabel">FAI :</span> <span class="val" id="geo-isp"></span></div>
+        <div><span class="glabel">Appareil :</span> <span class="val" id="geo-device"></span></div>
+      </div>
+
+      <div id="filelist-box">
+        <div id="filelist-inner"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="prank-reveal">
+  <h2>😄 Détends-toi, c'était une blague !</h2>
+  <p>
+    Rien n'a été piraté. Cette page est un simple canular visuel (fausse animation de "hacking")
+    créé pour faire une farce — aucune donnée n'a été touchée, aucun script malveillant ne tourne
+    sur ton appareil.
+  </p>
+  <button onclick="location.reload()">Rejouer la blague</button>
+</div>
+
+<script>
+// ---------- Matrix rain ----------
+const canvas = document.getElementById('matrix');
+const ctx = canvas.getContext('2d');
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+resize();
+window.addEventListener('resize', resize);
+
+const chars = "アイウエオカキクケコサシスセソ01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ$#@%&";
+const fontSize = 16;
+let columns, drops;
+function setupDrops(){
+  columns = Math.floor(canvas.width / fontSize);
+  drops = Array(columns).fill(1);
+}
+setupDrops();
+window.addEventListener('resize', setupDrops);
+
+function drawMatrix(){
+  ctx.fillStyle = 'rgba(0,0,0,0.08)';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = '#00ff41';
+  ctx.font = fontSize + 'px monospace';
+  for(let i=0;i<drops.length;i++){
+    const text = chars[Math.floor(Math.random()*chars.length)];
+    ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+    if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
+      drops[i] = 0;
+    }
+    drops[i]++;
+  }
+}
+setInterval(drawMatrix, 40);
+
+// ---------- Fake terminal typing ----------
+const lines = [
+  "[*] Connexion à un serveur distant...",
+  "[+] Connexion établie (192.168.13.37)",
+  "[*] Scan des ports ouverts...",
+  "[+] Ports 22, 80, 443, 3306 trouvés vulnérables",
+  "[*] Contournement du pare-feu...",
+  "[+] Pare-feu contourné avec succès",
+  "[*] Extraction des identifiants...",
+  "[+] 1 337 identifiants récupérés",
+  "[*] Déchiffrement des mots de passe...",
+  "[+] Accès administrateur obtenu",
+  "[*] Téléchargement des fichiers sensibles...",
+];
+
+const termEl = document.getElementById('terminal-lines');
+let lineIndex = 0;
+let charIndex = 0;
+
+function typeLine(){
+  if(lineIndex >= lines.length){
+    lineIndex = 0;
+    termEl.textContent = "";
+  }
+  const currentLine = lines[lineIndex];
+  if(charIndex <= currentLine.length){
+    termEl.textContent = lines.slice(0,lineIndex).join("\n") + (lineIndex>0?"\n":"") + currentLine.slice(0,charIndex);
+    charIndex++;
+    setTimeout(typeLine, 18 + Math.random()*25);
+  } else {
+    lineIndex++;
+    charIndex = 0;
+    setTimeout(typeLine, 200 + Math.random()*300);
+  }
+}
+typeLine();
+
+// ---------- Progress bar ----------
+const bar = document.getElementById('progress-bar');
+const pctLabel = document.getElementById('pct');
+let pct = 0;
+const progressInterval = setInterval(()=>{
+  pct += Math.random()*1.1;
+  if(pct >= 100){
+    pct = 100;
+    clearInterval(progressInterval);
+    setTimeout(revealPrank, 900);
+  }
+  bar.style.width = pct + '%';
+  pctLabel.textContent = Math.floor(pct) + '%';
+}, 400);
+
+// ---------- Random glitch flashes ----------
+const flash = document.getElementById('glitchflash');
+setInterval(()=>{
+  if(Math.random() > 0.85){
+    flash.style.opacity = 0.08;
+    setTimeout(()=>{flash.style.opacity = 0;}, 80);
+  }
+}, 400);
+
+// ---------- Screen shake ----------
+setInterval(()=>{
+  if(Math.random() > 0.9){
+    document.body.classList.add('shake');
+    setTimeout(()=>document.body.classList.remove('shake'), 400);
+  }
+}, 1500);
+
+// ---------- Fake geolocation reveal (purely cosmetic, no real data used) ----------
+const geoData = {
+  ip: (Math.floor(Math.random()*223)+1)+"."+Math.floor(Math.random()*255)+"."+Math.floor(Math.random()*255)+"."+Math.floor(Math.random()*255),
+  loc: "Lyon, France",
+  isp: "Orange S.A.",
+  device: "Windows 11 / Chrome"
+};
+function revealGeoField(id, text, delay){
+  setTimeout(()=>{
+    const el = document.getElementById(id);
+    el.textContent = text;
+    el.classList.add('show');
+  }, delay);
+}
+revealGeoField('geo-ip', geoData.ip, 3000);
+revealGeoField('geo-loc', geoData.loc, 6000);
+revealGeoField('geo-isp', geoData.isp, 9000);
+revealGeoField('geo-device', geoData.device, 12000);
+
+// ---------- Fake file list scan ----------
+const fakeFiles = [
+  "C:/Users/Documents/photos_perso.zip",
+  "C:/Users/Documents/mots_de_passe.txt",
+  "C:/Users/Bureau/releve_bancaire.pdf",
+  "C:/Users/Documents/contacts.csv",
+  "C:/Users/AppData/cookies_session.db",
+  "C:/Users/Documents/identite_scan.jpg",
+  "C:/Users/Bureau/entreprise_backup.zip",
+  "C:/Users/Documents/historique_nav.log"
+];
+const filelistInner = document.getElementById('filelist-inner');
+let fIndex = 0;
+function addFakeFile(){
+  if(fIndex >= fakeFiles.length){
+    // mark a few as "deleted" for dramatic effect, then loop
+    const rows = filelistInner.querySelectorAll('div');
+    rows.forEach((r,i)=>{ if(i % 2 === 0) r.classList.add('deleted'); });
+    setTimeout(()=>{
+      filelistInner.innerHTML = "";
+      fIndex = 0;
+      addFakeFile();
+    }, 3000);
+    return;
+  }
+  const row = document.createElement('div');
+  row.textContent = "↳ " + fakeFiles[fIndex];
+  filelistInner.appendChild(row);
+  fIndex++;
+  setTimeout(addFakeFile, 900 + Math.random()*600);
+}
+addFakeFile();
+
+// ---------- Reveal the prank ----------
+function revealPrank(){
+  document.getElementById('prank-reveal').style.display = 'flex';
+}
+</script>
+
+</body>
+</html>
